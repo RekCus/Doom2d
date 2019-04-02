@@ -130,6 +130,10 @@ public class CharacterController2D : MonoBehaviour
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+        if(!m_Grounded && jump)
+        {
+            m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+        }
 	}
 
 
