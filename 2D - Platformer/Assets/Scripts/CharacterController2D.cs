@@ -18,6 +18,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+    private int jtimes;
 
 	[Header("Events")]
 	[Space]
@@ -129,22 +130,24 @@ public class CharacterController2D : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            jtimes = 1;
 		}
-        if(!m_Grounded && jump)
+        else if (!m_Grounded && jump && jtimes == 1)
         {
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            jtimes--;
+
         }
 	}
 
 
 	private void Flip()
 	{
-		// Switch the way the player is labelled as facing.
+		
 		m_FacingRight = !m_FacingRight;
 
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+        
+        transform.Rotate(0f,180f,0f);
 	}
 }

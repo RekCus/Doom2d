@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - pistol
+  - enemy
+  - player
+  - bullet
+  - suit
+  - shotgun
+  - door
+  - spikes
+  - enemy1s
   layers:
   - Default
   - TransparentFX
